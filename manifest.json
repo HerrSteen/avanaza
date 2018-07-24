@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Avanaza",
   "version": "1.0.0",
-  "description": "Add buy- & sell-buttons to Avanza",
+  "description": "Add buttons to fill in the current price in Avanzas shop-screen.",
   "content_scripts": [
     {
       "js": [
