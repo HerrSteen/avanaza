@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Avanaza",
+  "version": "1.0.0",
+  "description": "Add buy- & sell-buttons to Avanza",
+  "content_scripts": [
+    {
+      "js": [
+        "main.js"
+      ],
+      "matches": [
+        "https://www.avanza.se/handla*"
+      ]
+    }
+  ]
+}
