@@ -6,6 +6,10 @@
   "content_scripts": [
     {
       "js": [
+        "link.js",
+        "buttons.js",
+        "spread.js",
+        "sumInput.js",
         "main.js"
       ],
       "matches": [

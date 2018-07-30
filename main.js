@@ -1,116 +1,26 @@
 "use strict";
 
-const pane = document.getElementsByClassName("buttonpane")[0];
+const buttonContainer = document.getElementsByClassName("buttonpane")[0];
+const inputContainer = document.getElementsByClassName("inputs3")[0];
+const spreadContainer = document.getElementsByClassName("captionBar")[0];
+const orderForm = document.getElementsByClassName("orderForm")[0];
 
-const getValue = () => {
-  const orderDepth = document.getElementsByClassName("order_depth")[0];
-  const tr = orderDepth.getElementsByTagName("tr")[2];
-  const tds = tr.getElementsByTagName("td");
+const isBuySite = window.location.href.includes("kop");
+const isSellSite = window.location.href.includes("salj");
 
-  return {
-    buyPrice: Number(tds[1].innerHTML.replace(",", ".")),
-    sellPrice: Number(tds[4].innerHTML.replace(",", ".")),
-  }
-};
+addSpread(spreadContainer);
 
-const triggerCalc = () => {
-  const el = document.getElementById("volume");
-  const e = document.createEvent("HTMLEvents");
-  e.initEvent("keyup", true, false);
-  el.dispatchEvent(e);
-};
+if (isBuySite) {
+  const button = createButton(buttonContainer, "Säljarens pris", "buy", buttonClick);
+  addSumInput(inputContainer);
+  createLink(orderForm, "sälj", "salj");
+  const sellButton = document.getElementsByClassName("sellBtn")[0];
+  sellButton.parentNode.removeChild(sellButton);
 
-const updatePrice = (price) => {
-  const priceEl = document.getElementById("price");
-  priceEl.value = price;
-};
+} else if (isSellSite) {
+  createButton(buttonContainer, "Köparens pris", "sell", buttonClick);
+  createLink(orderForm, "köp", "kop");
 
-const addBuyButton = () => {
-  const buyButton = document.createElement("button");
-  buyButton.classList.add("buyBtn");
-  buyButton.innerHTML = "Säljarens pris";
-
-  const updatePriceEvent = () => {
-    const v = getValue().sellPrice;
-    updatePrice(v);
-    triggerCalc();
-  };
-
-  buyButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    updatePriceEvent();
-    setInterval(updatePriceEvent, 1000);
-  });
-
-  pane.appendChild(buyButton);
-};
-
-const addSellButton = () => {
-  const sellButton = document.createElement("button");
-  sellButton.classList.add("sellBtn");
-  sellButton.innerHTML = "Köparens pris";
-
-  const updatePrice = () => {
-    const v = getValue().buyPrice;
-    updatePriceEvent(v);
-    triggerCalc();
-  };
-
-  sellButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    updatePriceEvent();
-    setInterval(updatePriceEvent, 1000);
-  });
-
-  pane.appendChild(sellButton);
-};
-
-const addCustomInput = () => {
-  const label = document.createElement("label");
-  label.innerHTML = "Summa";
-  label.style.marginTop = "10px";
-  label.style.marginLeft = "6px";
-
-  const customInput = document.createElement("input");
-  customInput.style.width = "44%";
-
-  customInput.addEventListener("keyup", () => {
-    const volume = document.getElementById("volume");
-    const price = document.getElementById("price");
-    const ammount = Number(customInput.value);
-    const priceVal = Number(price.value.replace(",", "."));
-
-    volume.value = Math.floor(ammount / priceVal);
-  });
-
-  pane.appendChild(label);
-  pane.appendChild(customInput);
-};
-
-const addSpread = () => {
-  const getSpread = () => {
-    const prices = getValue();
-    let spread = (prices.buyPrice - prices.sellPrice) / prices.sellPrice * 100;
-    return Math.floor(spread * 100) / 100 * -1;
-  };
-
-  const header = document.createElement("h2");
-  header.classList.add("fRight");
-  header.innerHTML = `${getSpread()}%`;
-
-  const container = document.getElementsByClassName("captionBar")[0];
-  container.appendChild(header);
-
-  setInterval(() => {
-    console.log("i interval", getSpread());
-    header.innerHTML = `${getSpread()}%`;
-  }, 1000);
-};
-
-if (window.location.href.includes("kop")) {
-  addBuyButton();
-  addCustomInput();
-} else if (window.location.href.includes("salj")) {
-  addSellButton();
+  const buyButton = document.getElementsByClassName("buyBtn")[0];
+  buyButton.parentNode.removeChild(buyButton);
 }
-addSpread();
