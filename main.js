@@ -26,12 +26,12 @@ renameElement("grid_7", "grid_12");
 addSpread(spreadContainer);
 
 if (isBuySite) {
-  const button = createButton(buttonContainer, "Säljarens pris", "buy", buttonClick);
+  const button = createButton(buttonContainer, "Säljarens pris", "sell", buttonClick);
   addSumInput(inputContainer);
   removeElement("sellBtn");
   createLink(orderForm, "sälj", "salj");
 } else if (isSellSite) {
-  createButton(buttonContainer, "Köparens pris", "sell", buttonClick);
+  createButton(buttonContainer, "Köparens pris", "buy", buttonClick);
   createLink(orderForm, "köp", "kop");
   removeElement("avanzabank_transfer_links");
 

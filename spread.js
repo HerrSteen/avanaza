@@ -17,7 +17,6 @@ const addSpread = (container) => {
   container.appendChild(header);
 
   setInterval(() => {
-    console.log("i interval", getSpread());
     header.innerHTML = getSpread();
   }, 1000);
 };

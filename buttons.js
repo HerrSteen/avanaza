@@ -46,7 +46,6 @@ const buttonClick = (e) => {
   const trigger = () => {
     const type = e.target.dataset.type;
     const price = getPrices()[type];
-    console.log("---")
     updatePrice(price);
     triggerCalc();
   }
