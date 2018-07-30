@@ -14,19 +14,22 @@ const removeElement = (className) => {
   el.parentNode.removeChild(el);
 };
 
-const el = document.getElementsByClassName("grid_7")[0];
-el.classList.add("grid_12");
+const renameElement = (curr, next) => {
+  const el = document.getElementsByClassName(curr)[0];
+  el.classList.add(next);
+};
+
+removeElement("transferLinks");
+removeElement("grid_5");
+renameElement("grid_7", "grid_12");
 
 addSpread(spreadContainer);
 
 if (isBuySite) {
   const button = createButton(buttonContainer, "Säljarens pris", "buy", buttonClick);
   addSumInput(inputContainer);
-  createLink(orderForm, "sälj", "salj");
   removeElement("sellBtn");
-  removeElement("transferLinks");
-  removeElement("grid_5");
-
+  createLink(orderForm, "sälj", "salj");
 } else if (isSellSite) {
   createButton(buttonContainer, "Köparens pris", "sell", buttonClick);
   createLink(orderForm, "köp", "kop");
