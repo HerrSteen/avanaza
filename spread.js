@@ -1,7 +1,7 @@
 const addSpread = (container) => {
   const getSpread = () => {
     const prices = getPrices();
-    let spread = (prices.buyPrice - prices.sellPrice) / prices.sellPrice * 100;
+    let spread = (prices.buy - prices.sell) / prices.sell * 100;
 
     if (isNaN(spread)) {
       return "Ingen";
