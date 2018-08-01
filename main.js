@@ -8,22 +8,12 @@ const orderForm = document.getElementsByClassName("orderForm")[0];
 const isBuySite = window.location.href.includes("kop");
 const isSellSite = window.location.href.includes("salj");
 
-const removeElement = (className) => {
-  const el = document.getElementsByClassName(className)[0];
-  if (!el) return null;
-  el.parentNode.removeChild(el);
-};
-
-const renameElement = (curr, next) => {
-  const el = document.getElementsByClassName(curr)[0];
-  el.classList.add(next);
-};
-
 removeElement("transferLinks");
 removeElement("grid_5");
 renameElement("grid_7", "grid_12");
 
 addSpread(spreadContainer);
+addKeyListener();
 
 if (isBuySite) {
   const button = createButton(buttonContainer, "Säljarens pris", "sell", buttonClick);
@@ -34,6 +24,5 @@ if (isBuySite) {
   createButton(buttonContainer, "Köparens pris", "buy", buttonClick);
   createLink(orderForm, "köp", "kop");
   removeElement("avanzabank_transfer_links");
-
   removeElement("buyBtn");
 }

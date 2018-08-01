@@ -8,12 +8,8 @@ const addSumInput = (container) => {
   customInput.style.width = "30%";
 
   customInput.addEventListener("keyup", () => {
-    const volume = document.getElementById("volume");
-    const price = document.getElementById("price");
-    const ammount = Number(customInput.value);
-    const priceVal = Number(price.value.replace(",", "."));
-
-    volume.value = Math.ceil(ammount / priceVal);
+    const amount = Number(customInput.value);
+    calcNumberOfStocks(amount);
   });
 
   container.appendChild(label);

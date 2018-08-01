@@ -6,10 +6,12 @@
   "content_scripts": [
     {
       "js": [
+        "fns.js",
         "link.js",
-        "buttons.js",
+        "button.js",
         "spread.js",
         "sumInput.js",
+        "keylistener.js",
         "main.js"
       ],
       "matches": [

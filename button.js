@@ -1,28 +1,5 @@
 let interval;
 
-const getPrices = () => {
-  const orderDepth = document.getElementsByClassName("order_depth")[0];
-  const tr = orderDepth.getElementsByTagName("tr")[2];
-  const tds = tr.getElementsByTagName("td");
-
-  return {
-    buy: Number(tds[1].innerHTML.replace(",", ".")),
-    sell: Number(tds[4].innerHTML.replace(",", ".")),
-  }
-};
-
-const updatePrice = (price) => {
-  const priceEl = document.getElementById("price");
-  priceEl.value = price;
-};
-
-const triggerCalc = () => {
-  const el = document.getElementById("volume");
-  const e = document.createEvent("HTMLEvents");
-  e.initEvent("keyup", true, false);
-  el.dispatchEvent(e);
-};
-
 const createButton = (container, text, type, onClick) => {
   const button = document.createElement("button");
   // button.classList.add("buyBtn");
@@ -37,7 +14,6 @@ const createButton = (container, text, type, onClick) => {
   button.addEventListener("click", onClick);
   container.appendChild(button);
 };
-
 
 const buttonClick = (e) => {
   e.preventDefault();
