@@ -1,2 +1,2 @@
 # avanaza
-Add pro functionality to the shop screen.
+Add **pro** functionality to the shop screen.
