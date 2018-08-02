@@ -1,2 +1,2 @@
 # avanaza
-Add buttons to fill in the current price in Avanzas shop-screen.
+Add pro functionality to the shop screen.

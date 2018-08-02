@@ -2,7 +2,6 @@ let interval;
 
 const createButton = (container, text, type, onClick) => {
   const button = document.createElement("button");
-  // button.classList.add("buyBtn");
   button.innerHTML = text;
   button.dataset.type = type;
   button.style.backgroundColor = "#ccac00";
