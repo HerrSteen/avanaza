@@ -3,9 +3,19 @@ const getPrices = () => {
   const tr = orderDepth.getElementsByTagName("tr")[2];
   const tds = tr.getElementsByTagName("td");
 
+  let buy = tds[1].innerHTML;
+  buy = buy.replace(",", ".");
+  buy = buy.replace("*", "");
+  buy = Number(buy);
+
+  let sell = tds[4].innerHTML;
+  sell = sell.replace(",", ".");
+  sell = sell.replace("*", "");
+  sell = Number(sell);
+
   return {
-    buy: Number(tds[1].innerHTML.replace(",", ".")),
-    sell: Number(tds[4].innerHTML.replace(",", ".")),
+    buy,
+    sell
   }
 };
 
@@ -21,12 +31,22 @@ const triggerCalc = () => {
   el.dispatchEvent(e);
 };
 
-const calcNumberOfStocks = (amount) => {
-  const volume = document.getElementById("volume");
+const setVolume = (num) => {
+  const volumeInput = document.getElementById("volume");
+  volume.value = num;
+};
+
+const getVolume = () => {
+  const volumeInput = document.getElementById("volume");
+  return Number(volumeInput.value);
+};
+
+const calculateVolume = (amount) => {
   const price = document.getElementById("price");
   const priceVal = Number(price.value.replace(",", "."));
 
-  volume.value = Math.ceil(amount / priceVal);
+  const num = Math.ceil(amount / priceVal);
+  setVolume(num);
 };
 
 const removeElement = (className) => {

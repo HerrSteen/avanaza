@@ -2,6 +2,7 @@ let interval;
 
 const createButton = (container, text, type, onClick) => {
   const button = document.createElement("button");
+  button.id = "avanaza__price-sync";
   button.innerHTML = text;
   button.dataset.type = type;
   button.style.backgroundColor = "#ccac00";

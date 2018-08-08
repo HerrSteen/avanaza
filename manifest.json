@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Avanaza",
   "version": "1.0.0",
-  "description": "Add buttons to fill in the current price in Avanzas shop-screen.",
+  "description": "Add pro functionality to the shop screen.",
   "content_scripts": [
     {
       "js": [
@@ -10,7 +10,7 @@
         "link.js",
         "button.js",
         "spread.js",
-        "sumInput.js",
+        "volume.js",
         "keylistener.js",
         "main.js"
       ],

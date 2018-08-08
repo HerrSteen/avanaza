@@ -23,11 +23,29 @@ const addKeyListener = () => {
       return;
     }
 
-    if (!hasNumbersPressed()) return;
+    if (e.key === "F14") {
+      const volume = getVolume() + 1;
+      setVolume(volume);
+      triggerCalc();
+      return;
+    }
 
+    if (e.key === "F13") {
+      const volume = getVolume() - 1;
+      setVolume(volume);
+      triggerCalc();
+      return;
+    }
+
+    if (e.key === "j") {
+      const button = document.getElementById("avanaza__price-sync");
+      button.click();
+    }
+
+    if (!hasNumbersPressed()) return;
     if (e.key === "k" || e.key === "h") {
       const sum = numbersPressed * multiply[e.key];
-      calcNumberOfStocks(sum);
+      calculateVolume(sum);
       triggerCalc();
     }
 

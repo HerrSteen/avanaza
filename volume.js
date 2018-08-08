@@ -9,7 +9,7 @@ const addSumInput = (container) => {
 
   customInput.addEventListener("keyup", () => {
     const amount = Number(customInput.value);
-    calcNumberOfStocks(amount);
+    calculateVolume(amount);
   });
 
   container.appendChild(label);
